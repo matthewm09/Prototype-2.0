@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
     public float speed = 10.0f;
-   
+    public GameObject projectilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+       if (Input.GetKeyDown(KeyCode.Space))
+       {
+        // launch a projectile from the player
+        Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+       }
+
         if (transform.position.x < -24)
         {
             transform.position = new Vector3(-24,transform.position.y, transform.position.z);
